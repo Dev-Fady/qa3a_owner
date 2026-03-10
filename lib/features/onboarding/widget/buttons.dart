@@ -36,7 +36,7 @@ class Buttons extends StatelessWidget {
                 );
                 GoRouter.of(
                   context,
-                ).pushReplacementNamed(RouterName.signInScreen);
+                ).pushReplacementNamed(RouterName.authScreen);
               } else {
                 _controller.nextPage(
                   duration: const Duration(milliseconds: 400),
@@ -62,7 +62,7 @@ class Buttons extends StatelessWidget {
                 );
                 GoRouter.of(
                   context,
-                ).pushReplacementNamed(RouterName.signInScreen);
+                ).pushReplacementNamed(RouterName.authScreen);
               },
               child: Text("تخطي", style: TextStyle(fontSize: 12.sp)),
             ),

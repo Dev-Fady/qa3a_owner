@@ -7,13 +7,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
+import 'package:qa3a_owner/config/routes/app_routes.dart';
 
 import 'package:qa3a_owner/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    final GoRouter router = initializeRouter();
+
+    await tester.pumpWidget(MyApp(router: router));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
