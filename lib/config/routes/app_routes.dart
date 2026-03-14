@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:qa3a_owner/config/routes/router_name.dart';
 import 'package:qa3a_owner/core/constant/constant.dart';
+import 'package:qa3a_owner/features/add_hall/presentation/screen/add_hall_screen.dart';
 import 'package:qa3a_owner/features/auth/screen/auth_screen.dart';
 import 'package:qa3a_owner/features/auth/sign_on/presentation/screen/sign_on_screen.dart';
 import 'package:qa3a_owner/features/auth/sign_up/presentation/screen/sign_up_screen.dart';
@@ -55,6 +56,11 @@ GoRouter createRouter(String initialLocation) {
             path: RouterName.settingsScreen,
             name: RouterName.settingsScreen,
             builder: (context, state) => const SettingsScreen(),
+          ),
+          GoRoute(
+            path: RouterName.addHallScreen,
+            name: RouterName.addHallScreen,
+            builder: (context, state) => const AddHallScreen(),
           ),
         ],
       ),

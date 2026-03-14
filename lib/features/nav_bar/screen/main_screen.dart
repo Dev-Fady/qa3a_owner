@@ -14,7 +14,9 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: child,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          context.goNamed(RouterName.addHallScreen);
+        },
         elevation: 4,
         child: const Icon(Icons.add),
       ),

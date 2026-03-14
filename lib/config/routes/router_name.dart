@@ -7,4 +7,5 @@ class RouterName {
   static const String authScreen = '/authScreen';
   static const String mainScreen = '/mainScreen';
   static const String settingsScreen = '/settingsScreen';
+  static const String addHallScreen = '/addHallScreen';
 }
