@@ -1,5 +1,5 @@
 import 'package:device_preview_plus/device_preview_plus.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -14,12 +14,13 @@ Future<void> main() async {
   await HiveCacheHelper.init();
   final GoRouter router = await initializeRouter();
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) {
-        return MyApp(router: router);
-      },
-    ),
+    // DevicePreview(
+    //   enabled: !kReleaseMode,
+    //   builder: (context) {
+    //     return 
+        MyApp(router: router)
+      // },
+    // ),
   );
 }
 

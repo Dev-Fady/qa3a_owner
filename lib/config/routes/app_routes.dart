@@ -79,6 +79,6 @@ Future<String> getInitialRoute() async {
   } else if (isLogin) {
     return RouterName.homeScreen;
   } else {
-    return RouterName.signInScreen;
+    return RouterName.authScreen;
   }
 }

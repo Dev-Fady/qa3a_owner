@@ -19,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('تم إنشاء الحساب بنجاح')),
             );
-            GoRouter.of(context).pushReplacement(RouterName.signInScreen);
+            GoRouter.of(context).pushReplacementNamed(RouterName.authScreen);
           }
 
           if (state is SignUpError) {
