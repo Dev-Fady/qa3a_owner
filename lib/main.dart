@@ -12,7 +12,7 @@ Future<void> main() async {
 
   await SharedCacheHelper().init();
   await HiveCacheHelper.init();
-  final GoRouter router = initializeRouter();
+  final GoRouter router = await initializeRouter();
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,

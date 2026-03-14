@@ -1,5 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:qa3a_owner/config/routes/router_name.dart';
+import 'package:qa3a_owner/core/constant/constant.dart';
+import 'package:qa3a_owner/core/service/cache/shared_cache_helper.dart';
 import 'package:qa3a_owner/features/auth/sign_on/presentation/manager/sign_in_cubit.dart';
 import 'package:qa3a_owner/features/auth/sign_on/presentation/manager/sign_in_state.dart';
 import 'package:qa3a_owner/features/auth/sign_on/presentation/screen/widget/sign_in_body.dart';
@@ -17,6 +23,11 @@ class SignOnScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('تم تسجيل الدخول بنجاح')),
             );
+            SharedCacheHelper().saveData(key: kIsLogin, value: true);
+            log(
+              "Saved login done: ${SharedCacheHelper().getData(key: kIsLogin)}",
+            );
+            context.goNamed(RouterName.homeScreen);
           } else if (state is SignInError) {
             ScaffoldMessenger.of(
               context,
