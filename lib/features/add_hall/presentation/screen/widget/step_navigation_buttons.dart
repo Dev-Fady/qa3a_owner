@@ -34,11 +34,14 @@ class StepNavigationButtons extends StatelessWidget {
             ),
           ),
         if (currentStep > 0) SizedBox(width: 16.w),
+
         Expanded(
           child: ButtonNext(
             onPressed: onNext,
+            title: currentStep == 3 ? "حفظ" : "التالي",
           ),
         ),
+
       ],
     );
   }

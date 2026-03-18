@@ -1,17 +1,20 @@
+
 import 'package:go_router/go_router.dart';
 import 'package:qa3a_owner/config/routes/router_name.dart';
 import 'package:qa3a_owner/core/constant/constant.dart';
+import 'package:qa3a_owner/features/add_hall/models/hall_model.dart';
 import 'package:qa3a_owner/features/add_hall/presentation/screen/add_hall_screen.dart';
 import 'package:qa3a_owner/features/auth/screen/auth_screen.dart';
 import 'package:qa3a_owner/features/auth/sign_on/presentation/screen/sign_on_screen.dart';
 import 'package:qa3a_owner/features/auth/sign_up/presentation/screen/sign_up_screen.dart';
 import 'package:qa3a_owner/features/home/presentation/screen/home_screen.dart';
+import 'package:qa3a_owner/features/my_halls/presentation/screen/hall_details.dart';
 import 'package:qa3a_owner/features/nav_bar/screen/main_screen.dart';
 import 'package:qa3a_owner/features/onboarding/screen/onboarding_screen.dart';
 import 'package:qa3a_owner/features/settings/presentation/screen/settings_screen.dart';
 import 'package:qa3a_owner/features/splash/screen/splash_screen.dart';
+import 'package:qa3a_owner/features/my_halls/presentation/screen/my_halls_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:qa3a_owner/core/service/cache/shared_cache_helper.dart';
 
 GoRouter createRouter(String initialLocation) {
   return GoRouter(
@@ -61,6 +64,19 @@ GoRouter createRouter(String initialLocation) {
             path: RouterName.addHallScreen,
             name: RouterName.addHallScreen,
             builder: (context, state) => const AddHallScreen(),
+          ),
+          GoRoute(
+            path: RouterName.myHallsScreen,
+            name: RouterName.myHallsScreen,
+            builder: (context, state) => const MyHallsScreen(),
+          ),
+          GoRoute(
+            path: RouterName.hallDetailsScreen,
+            name: RouterName.hallDetailsScreen,
+            builder: (context, state) {
+              final hallModel = state.extra as HallModel;
+              return HallDetails(hallModel: hallModel);
+            },
           ),
         ],
       ),

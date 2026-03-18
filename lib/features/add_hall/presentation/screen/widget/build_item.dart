@@ -42,8 +42,11 @@ class BuildItem extends StatelessWidget {
           ),
         ),
         SizedBox(height: 6.h),
+
         Text(
           title,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 10.sp,
             color: isActive || isCompleted ? Colors.blue : Colors.grey,
@@ -51,6 +54,7 @@ class BuildItem extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
+
       ],
     );
   }

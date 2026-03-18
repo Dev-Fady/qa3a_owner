@@ -12,6 +12,8 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
       body: child,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -37,7 +39,13 @@ class MainScreen extends StatelessWidget {
                 },
                 icon: Icon(Icons.settings),
               ),
-              IconButton(onPressed: () {}, icon: Icon(Icons.business)),
+              IconButton(
+                onPressed: () {
+                  context.goNamed(RouterName.myHallsScreen);
+                },
+                icon: const Icon(Icons.business),
+              ),
+
               SizedBox(width: 50.w), // The dummy child
               IconButton(onPressed: () {}, icon: Icon(Icons.calendar_today)),
               IconButton(

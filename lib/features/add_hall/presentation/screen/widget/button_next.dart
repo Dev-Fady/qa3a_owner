@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
 class ButtonNext extends StatelessWidget {
-  const ButtonNext({super.key, this.onPressed});
+  const ButtonNext({super.key, this.onPressed, this.title});
   final Function()? onPressed;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,11 @@ class ButtonNext extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Text(
-          "التالي",
+          title ?? "التالي",
           style: TextStyle(fontSize: 16.sp, color: Colors.white),
         ),
       ),
     );
   }
 }
+

@@ -1,8 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
 class LocationCapacityStep extends StatelessWidget {
-  const LocationCapacityStep({super.key});
+  const LocationCapacityStep({
+    super.key,
+    required this.addressController,
+    required this.capacityController,
+    required this.pricePerHourController,
+    required this.pricePerDayController,
+    required this.selectedCity,
+    required this.onCityChanged,
+  });
+
+  final TextEditingController addressController;
+  final TextEditingController capacityController;
+  final TextEditingController pricePerHourController;
+  final TextEditingController pricePerDayController;
+  final String selectedCity;
+  final Function(String) onCityChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +28,10 @@ class LocationCapacityStep extends StatelessWidget {
         // العنوان
         _buildTitle("العنوان"),
         SizedBox(height: 8.h),
-        _buildTextField(hintText: "شارع _ حى _ مدينة"),
+        _buildTextField(
+          hintText: "شارع _ حى _ مدينة",
+          controller: addressController,
+        ),
 
         SizedBox(height: 20.h),
 
@@ -28,14 +47,18 @@ class LocationCapacityStep extends StatelessWidget {
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               isExpanded: true,
-              value: "القاهرة",
+              value: selectedCity,
               items: ["القاهرة", "الجيزة", "الإسكندرية"]
-                  .map((e) => DropdownMenuItem(
-                        value: e,
-                        child: Text(e, textAlign: TextAlign.right),
-                      ))
+                  .map(
+                    (e) => DropdownMenuItem(
+                      value: e,
+                      child: Text(e, textAlign: TextAlign.right),
+                    ),
+                  )
                   .toList(),
-              onChanged: (val) {},
+              onChanged: (val) {
+                if (val != null) onCityChanged(val);
+              },
               icon: const Icon(Icons.keyboard_arrow_down, color: Colors.blue),
             ),
           ),
@@ -52,7 +75,9 @@ class LocationCapacityStep extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14.r),
             image: const DecorationImage(
-              image: NetworkImage("https://media.wired.com/photos/59269770af95806129f50b5e/master/pass/GoogleMap-660x440.jpg"), // Placeholder map
+              image: NetworkImage(
+                "https://staticmapmaker.com/img/google-placeholder.png",
+              ), // Placeholder map
               fit: BoxFit.cover,
             ),
           ),
@@ -66,21 +91,30 @@ class LocationCapacityStep extends StatelessWidget {
         // السعة
         _buildTitle("السعة"),
         SizedBox(height: 8.h),
-        _buildTextField(hintText: "500"),
+        _buildTextField(
+          hintText: "500",
+          controller: capacityController,
+        ),
 
         SizedBox(height: 20.h),
 
         // السعر / ساعة
         _buildTitle("السعر / ساعة"),
         SizedBox(height: 8.h),
-        _buildTextField(hintText: "1000"),
+        _buildTextField(
+          hintText: "1000",
+          controller: pricePerHourController,
+        ),
 
         SizedBox(height: 20.h),
 
         // السعر / يوم
         _buildTitle("السعر / يوم"),
         SizedBox(height: 8.h),
-        _buildTextField(hintText: "15000"),
+        _buildTextField(
+          hintText: "15000",
+          controller: pricePerDayController,
+        ),
       ],
     );
   }
@@ -92,8 +126,12 @@ class LocationCapacityStep extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField({required String hintText}) {
+  Widget _buildTextField({
+    required String hintText,
+    required TextEditingController controller,
+  }) {
     return TextField(
+      controller: controller,
       textAlign: TextAlign.right,
       decoration: InputDecoration(
         hintText: hintText,
@@ -108,3 +146,4 @@ class LocationCapacityStep extends StatelessWidget {
     );
   }
 }
+

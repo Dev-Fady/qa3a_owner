@@ -5,8 +5,20 @@ import 'package:qa3a_owner/features/add_hall/presentation/screen/widget/name_ser
 import 'package:qa3a_owner/features/add_hall/presentation/screen/widget/show_packages.dart';
 import 'package:qa3a_owner/features/add_hall/presentation/screen/widget/show_services.dart';
 
+
 class ServicesOffers extends StatefulWidget {
-  const ServicesOffers({super.key});
+  const ServicesOffers({
+    super.key,
+    required this.services,
+    required this.packages,
+    required this.onServicesUpdated,
+    required this.onPackagesUpdated,
+  });
+
+  final List<Map<String, String>> services;
+  final List<Map<String, String>> packages;
+  final Function(List<Map<String, String>>) onServicesUpdated;
+  final Function(List<Map<String, String>>) onPackagesUpdated;
 
   @override
   State<ServicesOffers> createState() => _ServicesOffersState();
@@ -25,9 +37,6 @@ class _ServicesOffersState extends State<ServicesOffers> {
   final packagePriceController = TextEditingController();
   final packageDescController = TextEditingController();
 
-  // 🔹 Data Lists
-  List<Map<String, String>> services = [];
-  List<Map<String, String>> packages = [];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,12 +79,12 @@ class _ServicesOffersState extends State<ServicesOffers> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       if (_serviceFormKey.currentState!.validate()) {
-                        setState(() {
-                          services.add({
-                            "name": serviceNameController.text,
-                            "desc": serviceDescController.text,
-                          });
+                        final updatedServices = List<Map<String, String>>.from(widget.services);
+                        updatedServices.add({
+                          "name": serviceNameController.text,
+                          "desc": serviceDescController.text,
                         });
+                        widget.onServicesUpdated(updatedServices);
 
                         serviceNameController.clear();
                         serviceDescController.clear();
@@ -100,7 +109,7 @@ class _ServicesOffersState extends State<ServicesOffers> {
 
           SizedBox(height: 15.h),
 
-          ShowServices(services: services),
+          ShowServices(services: widget.services),
 
           SizedBox(height: 20.h),
 
@@ -130,13 +139,13 @@ class _ServicesOffersState extends State<ServicesOffers> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       if (_packageFormKey.currentState!.validate()) {
-                        setState(() {
-                          packages.add({
-                            "name": packageNameController.text,
-                            "price": packagePriceController.text,
-                            "desc": packageDescController.text,
-                          });
+                        final updatedPackages = List<Map<String, String>>.from(widget.packages);
+                        updatedPackages.add({
+                          "name": packageNameController.text,
+                          "price": packagePriceController.text,
+                          "desc": packageDescController.text,
                         });
+                        widget.onPackagesUpdated(updatedPackages);
 
                         packageNameController.clear();
                         packagePriceController.clear();
@@ -162,9 +171,10 @@ class _ServicesOffersState extends State<ServicesOffers> {
 
           SizedBox(height: 15.h),
 
-          ShowPackages(packages: packages),
+          ShowPackages(packages: widget.packages),
         ],
       ),
     );
   }
 }
+

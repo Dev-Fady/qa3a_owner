@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qa3a_owner/features/add_hall/presentation/screen/widget/hall_type.dart';
 
+
 class BasicInfoStep extends StatelessWidget {
   const BasicInfoStep({
     super.key,
     required this.selectedType,
     required this.onTypeSelected,
+    required this.nameController,
+    required this.descriptionController,
   });
 
   final String? selectedType;
   final Function(String) onTypeSelected;
+  final TextEditingController nameController;
+  final TextEditingController descriptionController;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,10 @@ class BasicInfoStep extends StatelessWidget {
         // اسم القاعة
         _buildTitle("اسم القاعة"),
         SizedBox(height: 8.h),
-        _buildTextField(hintText: "ادخل اسم القاعة"),
+        _buildTextField(
+          hintText: "ادخل اسم القاعة",
+          controller: nameController,
+        ),
 
         SizedBox(height: 20.h),
 
@@ -55,7 +63,11 @@ class BasicInfoStep extends StatelessWidget {
         // وصف القاعة
         _buildTitle("وصف القاعة"),
         SizedBox(height: 8.h),
-        _buildTextField(hintText: "اكتب وصفًا تفصيليًا عن القاعة ....", maxLines: 5),
+        _buildTextField(
+          hintText: "اكتب وصفًا تفصيليًا عن القاعة ....",
+          maxLines: 5,
+          controller: descriptionController,
+        ),
       ],
     );
   }
@@ -67,8 +79,13 @@ class BasicInfoStep extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField({required String hintText, int maxLines = 1}) {
+  Widget _buildTextField({
+    required String hintText,
+    int maxLines = 1,
+    required TextEditingController controller,
+  }) {
     return TextField(
+      controller: controller,
       maxLines: maxLines,
       textAlign: TextAlign.right,
       decoration: InputDecoration(
@@ -83,3 +100,4 @@ class BasicInfoStep extends StatelessWidget {
     );
   }
 }
+

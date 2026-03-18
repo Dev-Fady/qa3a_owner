@@ -22,35 +22,45 @@ class AddHallStepper extends StatelessWidget {
           ),
         ],
       ),
+
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          BuildItem(
-            icon: Icons.card_giftcard,
-            title: "الخدمات والعروض",
-            isActive: currentStep == 3,
-            isCompleted: currentStep > 3,
+          Flexible(
+            child: BuildItem(
+              icon: Icons.card_giftcard,
+              title: "الخدمات والعروض",
+              isActive: currentStep == 3,
+              isCompleted: currentStep > 3,
+            ),
           ),
-          BuildItem(
-            icon: Icons.camera_alt_outlined,
-            title: "الصور",
-            isActive: currentStep == 2,
-            isCompleted: currentStep > 2,
+          Flexible(
+            child: BuildItem(
+              icon: Icons.camera_alt_outlined,
+              title: "الصور",
+              isActive: currentStep == 2,
+              isCompleted: currentStep > 2,
+            ),
           ),
-          BuildItem(
-            icon: Icons.location_on_outlined,
-            title: "الموقع والسعة",
-            isActive: currentStep == 1,
-            isCompleted: currentStep > 1,
+          Flexible(
+            child: BuildItem(
+              icon: Icons.location_on_outlined,
+              title: "الموقع والسعة",
+              isActive: currentStep == 1,
+              isCompleted: currentStep > 1,
+            ),
           ),
-          BuildItem(
-            icon: Icons.description_outlined,
-            title: "معلومات أساسية",
-            isActive: currentStep == 0,
-            isCompleted: currentStep > 0,
+          Flexible(
+            child: BuildItem(
+              icon: Icons.description_outlined,
+              title: "معلومات أساسية",
+              isActive: currentStep == 0,
+              isCompleted: currentStep > 0,
+            ),
           ),
         ],
       ),
+
     );
   }
 }
