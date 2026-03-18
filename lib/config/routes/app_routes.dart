@@ -11,6 +11,7 @@ import 'package:qa3a_owner/features/home/presentation/screen/home_screen.dart';
 import 'package:qa3a_owner/features/my_halls/presentation/screen/hall_details.dart';
 import 'package:qa3a_owner/features/nav_bar/screen/main_screen.dart';
 import 'package:qa3a_owner/features/onboarding/screen/onboarding_screen.dart';
+import 'package:qa3a_owner/features/reservations/presentation/screen/reservations_screen.dart';
 import 'package:qa3a_owner/features/settings/presentation/screen/settings_screen.dart';
 import 'package:qa3a_owner/features/splash/screen/splash_screen.dart';
 import 'package:qa3a_owner/features/my_halls/presentation/screen/my_halls_screen.dart';
@@ -77,6 +78,11 @@ GoRouter createRouter(String initialLocation) {
               final hallModel = state.extra as HallModel;
               return HallDetails(hallModel: hallModel);
             },
+          ),
+          GoRoute(
+            path: RouterName.reservationsScreen,
+            name: RouterName.reservationsScreen,
+            builder: (context, state) => const ReservationsScreen(),
           ),
         ],
       ),

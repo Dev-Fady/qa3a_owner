@@ -47,7 +47,12 @@ class MainScreen extends StatelessWidget {
               ),
 
               SizedBox(width: 50.w), // The dummy child
-              IconButton(onPressed: () {}, icon: Icon(Icons.calendar_today)),
+              IconButton(
+                onPressed: () {
+                  context.goNamed(RouterName.reservationsScreen);
+                },
+                icon: Icon(Icons.calendar_today),
+              ),
               IconButton(
                 onPressed: () {
                   context.goNamed(RouterName.homeScreen);

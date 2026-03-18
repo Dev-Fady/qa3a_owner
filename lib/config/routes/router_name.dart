@@ -10,4 +10,5 @@ class RouterName {
   static const String addHallScreen = '/addHallScreen';
   static const String myHallsScreen = '/myHallsScreen';
   static const String hallDetailsScreen = '/hallDetailsScreen';
+  static const String reservationsScreen = '/reservationsScreen';
 }
